@@ -18,3 +18,6 @@ app.config.from_object(enviroment)
 db = SQLAlchemy(app)
 
 Migrate(app, db)
+
+
+from app.routes import *
