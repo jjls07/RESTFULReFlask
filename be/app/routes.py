@@ -9,3 +9,8 @@ from app.Controllers import (
     TaskController as tasks,
 
 )
+
+@app.route("/tasks", methods=["GET"])
+def GetAllTasks():
+    result = tasks.GettAllTasks()
+    return result.jsonify()

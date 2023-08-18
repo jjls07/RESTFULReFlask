@@ -1,12 +1,18 @@
+import os
+
 class Config:
     pass
 
+
+class ProductionConfig(Config):
+    
+    SQLALCHEMY_DATABASE_URI = os.getenv('LOCAL_DB_CONN')
 
 class DevelopmentConfig(Config):
     DEBUG = True
 
 
-    # SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://root:password@localhost:3306/reactrestful'
+    # SQLALCHEMY_DATABASE_URI = os.getenv('LOCAL_DB_CONN')
 
 
     
