@@ -2,7 +2,7 @@ from app import db
 from datetime import datetime
 
 
-class Grupo(db.Model):
+class Tasks(db.Model):
     __tablename__ = "tasks"
 
     id = db.Column(db.Integer, primary_key=True)

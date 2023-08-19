@@ -2,7 +2,7 @@ from datetime import datetime
 
 from flask import request
 
-from app.Models import Tasks
+from app.Models.Tasks import Tasks
 
 from app import app, db
 
@@ -30,18 +30,18 @@ def SaveTask(task):
     try:
         task = Tasks(
             title=task.get("title"),
-            date=task.get("date"),
+            date=datetime.strptime(task.get("date"), '%Y/%m/%d'),
             reminder=task.get("reminder")
         )
 
-            
         db.session.add(task)
         db.session.commit()
 
-        app.logger.info("Task %s successfully created.", task.get("title"))
+        app.logger.info("Task successfully created.")
         ret.mensaje = "Task Created"
         
     except (Exception) as err:
+        print(err)
         ret.mensaje = "No se puede completar la solicitud."
         ret.status = 400
     
